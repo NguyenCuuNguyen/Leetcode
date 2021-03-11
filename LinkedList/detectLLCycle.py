@@ -39,5 +39,5 @@ class Solution(object):
     
 #        If fast and slow both start at head, when fast catches slow, slow has traveled H+D and fast 2(H+D). 
 #        Assume fast has traveled n loops in the cycle, we have:
-#        2H + 2D = H + D + L  -->  H + D = nL  --> H = nL - D
+#        2H + 2D = H + D + nL  -->  H + D = nL  --> H = nL - D
 #        Thus if two pointers start from head and X, respectively, one first reaches E, the other also reaches E. 
