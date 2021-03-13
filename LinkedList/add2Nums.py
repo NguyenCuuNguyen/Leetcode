@@ -33,6 +33,25 @@ class Solution(object):
 
         return head.next # <= head.val = 0 
 
+
+#METHOD 2: recursive
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        def toInt(node): 
+            return node.val + 10 * toInt(node.next) if node else 0 
+        def toList(n):
+            node = ListNode(n%10)
+            if n > 9:
+                node.next = toList(n/10)
+            return node
+        return toList(toInt(l1) + toInt(l2))
+
+
 #Learn from Alternative solutions:
 #(1) Chained assignment: n = n.next = ListNode(val) means first n = ListNode(val) , now the n is ListNode(val), then n.next point to the address ListNode(val) which means point to itself!!!
 #(2) carry, val = divmod(v1+v2+carry, 10)
