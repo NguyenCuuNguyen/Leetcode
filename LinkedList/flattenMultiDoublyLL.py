@@ -7,7 +7,7 @@ class Node(object):
         self.next = next
         self.child = child
 """
-
+#METHOD 1: Traverse and serialize:
 class Solution(object):
     def flatten(self, head):
         """
@@ -54,4 +54,28 @@ class Solution(object):
 #Bc 3's child is None, traverse to p = 8 and repeat
             
                 
+#METHOD 2: STACK 
+class Solution(object):
+    def flatten(self, head):
+        """
+        :type head: Node
+        :rtype: Node
+        """
+        if not head:
+            return head
+        stack = [head]
+        prev = Node(0, None, head, None)
+        while stack:
+            root = stack.pop()
+            root.prev = prev
+            prev.next = root
+            prev = root
+            if root.next:
+                stack.append(root.next)
+            if root.child:
+                stack.append(root.child)
+                root.child = None
+        head.prev = None
+        return head
+            
             
