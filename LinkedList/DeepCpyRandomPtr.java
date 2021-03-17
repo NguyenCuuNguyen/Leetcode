@@ -14,6 +14,7 @@ class Node {
 */
 
 class Solution {
+    //Constant time O(1), Linear space(n)
     public Node copyRandomList(Node head) {
         HashMap<Node, Node> map = new HashMap<>();
         Node dummy = new Node(0);
