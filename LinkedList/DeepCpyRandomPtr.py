@@ -22,4 +22,4 @@ class Solution(object):
             dic[n].next = dic.get(n.next)
             dic[n].random = dic.get(n.random)
             n = n.next
-        return dic.get(head)
+        return dic.get(head)s
