@@ -12,6 +12,8 @@ class Solution {
     public ListNode deleteDuplicates(ListNode head) {
         ListNode temp = new ListNode(0);
         temp.next = head;
+        //use two pointers, slow - track the node before the dup nodes, 
+	// fast - to find the last node of dups.
         ListNode fast = temp;
         ListNode slow = temp;
         fast = slow.next; //fast points to first node
