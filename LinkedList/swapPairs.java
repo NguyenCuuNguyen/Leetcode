@@ -11,7 +11,7 @@ class Solution {
             current.next = second;
             first.next = second.next;
             current.next.next = first;
-            current = current.next.next;
+            current = current.next.nex t;
         }
         return temp.next;
     }
