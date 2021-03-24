@@ -2,6 +2,12 @@
 // The wheels can rotate freely and wrap around: for example we can turn '9' to be '0', or '0' to be '9'.
 // Each move consists of turning one wheel one slot.
 
+//pick the digit lock length time => numDigit^locklen = num of combination
+//               => num of combination * locklen for each of combo candidate in toVisit queue
+//Time = O(numDigit^locklen * locklen + deadends)
+//     = O(10 ^ 4 * 4 + deadends)
+
+//Space = O(numDigit^locklen + deadends)
 class openLock {
     public int openLock(String[] deadends, String target) {
         //state and destination --> BFS to find the shortest path/finding a node in a graph--> States as graph and navigate to destination 
