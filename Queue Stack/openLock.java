@@ -1,3 +1,7 @@
+//You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'.
+// The wheels can rotate freely and wrap around: for example we can turn '9' to be '0', or '0' to be '9'.
+// Each move consists of turning one wheel one slot.
+
 class openLock {
     public int openLock(String[] deadends, String target) {
         //state and destination --> BFS to find the shortest path/finding a node in a graph--> States as graph and navigate to destination 
@@ -8,7 +12,7 @@ class openLock {
         
         //once a number is considered, don't go back to it anymore
         HashSet<String> visited = new HashSet();
-        int level = 0;
+        int step = 0;
         visited.add("0000");
         //Add starting point to queue cuz BFS
         Queue<String> toVisit = new LinkedList();
@@ -26,7 +30,7 @@ class openLock {
                     continue; //break out of inner while
                 }
                 if(lock.equals(target)){
-                    return level;
+                    return step;
                 }
                
                 StringBuilder sb = new StringBuilder(lock);
@@ -51,7 +55,7 @@ class openLock {
                size--;
             }
             
-            level++;  
+            step++;  
         }
         return -1;
     }
