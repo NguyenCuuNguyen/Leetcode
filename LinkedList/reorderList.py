@@ -34,4 +34,24 @@ class Solution:
             head1.next = head2 # 1->5
             head1 = head2 #make 1 new head2
             head2 = nxt
-            
+           
+
+
+class Solution:
+    def reorderList(self, head):
+        if head is None or head.next is None:
+            return 
+        stack = []
+        cur = head
+        while cur:
+            stack.append(cur)
+            cur = cur.next
+        cur = head
+        while cur != stack[-1] and cur.next != stack[-1]:
+            lastNode = stack.pop()
+            nxt = cur.next
+            cur.next = lastNode
+            cur.next.next = nxt
+            cur = nxt
+            stack[-1].next = None
+        return 
