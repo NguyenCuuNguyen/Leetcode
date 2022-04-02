@@ -15,6 +15,7 @@ class Solution:
         return re
 
     """Recursive (XX):
+    must_pick = whether to select current element
     
     """
     def maxSubArray(self, nums: List[int]) -> int:
@@ -30,7 +31,7 @@ class Solution:
     Return biggest value in dp 
     Runtime = O(N), Space = O(N)
     """
-    def maxSubArray2(self, nums: List[int]) -> int:
+    def maxSubArray(self, nums: List[int]) -> int:
         dp = [0 for i in nums]
         dp[0] = nums[0]
         for i in range(1, len(nums)):
