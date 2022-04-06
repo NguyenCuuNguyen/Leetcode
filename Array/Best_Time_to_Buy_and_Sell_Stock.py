@@ -8,7 +8,7 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         """
-        Brute force: Time = O(N^2), Space = O(1)     
+        Brute force: Space = O(1), Time Limit Exceeded: Time = O(N^2)
         """
         max_so_far = 0
         n = len(prices)
@@ -31,4 +31,28 @@ class Solution:
             else:
                 profit = max(prices[i]-mn,profit)
         return profit
+
     
+    def maxProfit(self, prices: List[int]) -> int:
+        """Kadane algorithm: if profit >0, keep adding differnces. Otherwise setback to 0
+        Time: O(N), Space: O(1)
+        """
+        max_here, cur = 0,0 
+        n = len(prices)
+        for i in range(1, n):
+            cur = max(cur + prices[i] - prices[i-1], 0)
+            max_here = max(cur, max_here)
+        return max_here
+
+
+    def maxProfit(self, prices: List[int]) -> int:
+        """Keep Min element throughout, subtract current with min and compare that with current max
+        Time: O(N), Space: O(1)
+        """
+        max_here, min_here = 0, prices[0]
+        n = len(prices)
+        for i in range(1, n):
+            min_here = min(prices[i], min_here)
+            max_here = max(prices[i] - min_here, max_here)
+
+        return max_here
