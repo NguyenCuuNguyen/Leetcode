@@ -38,4 +38,34 @@ class Solution:
             dp[i] = max(dp[i-1] + nums[i], nums[i])
         return max(dp)
 
+    """Divide and Conquer O(N)"""
+    def maxSubArray(self, nums: List[int]) -> int:
+        def divideAndConquer(i, j):
+            print(f"Call with {i=} and {j=}")
+            if i == j:
+                return nums[i]
+
+            k = (i+j) // 2
+            res1 = divideAndConquer(i, k)
+            res2 = divideAndConquer(k+1, j)
+
+            left = leftMax = nums[k]
+            for a in range(k-1, i-1, -1):
+                left += nums[a]
+                leftMax = max(left, leftMax)
+            print(f"{leftMax=}")
+            
+            right = rightMax = nums[k+1]
+            for a in range(k+2, j+1):
+                right += nums[a]
+                rightMax = max(right, rightMax)
+            print(f"{rightMax=}")
+            
+            res3 = leftMax + rightMax
+            print(f"{res3=}")
+            print("##############################################")
+            return max(res1, res2, res3)
+        
+        return divideAndConquer(0, len(nums)-1)
+    
 
