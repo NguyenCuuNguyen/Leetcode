@@ -18,3 +18,17 @@ class Solution:
             matrix.append([1] + row + [1])
             row = []
         return matrix
+
+
+
+    """Any row can be constructed using the offset sum of the previous row.
+            1 3 3 1 0 
+        +   0 1 3 3 1
+        =   1 4 6 4 1
+    """
+    def generate(self, numRows):
+        res = [[1]]
+        for i in range(1, numRows):
+            res += [list(map(lambda x, y: x+y, res[-1] + [0], [0] + res[-1]))]
+        return res[:numRows]
+    
