@@ -41,3 +41,38 @@ class Solution:
                     box[box_index].append(cell)
         print(f"{row=}, {column=} and {box=}")
         return True
+
+
+"""break the problem down:
+Runtime: 95 ms, faster than 94.31% of Python3 online submissions for Valid Sudoku.
+Memory Usage: 14 MB, less than 7.98% of Python3 online submissions for Valid Sudoku.
+""""
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        return (self.is_row_valid(board) and self.is_column_valid(board) and self.is_box_valid(board))
+    
+    def is_row_valid(self, board):
+        for x in board:       
+            if not self.is_unit_valid(x):
+                return False   
+        return True
+            
+    def is_column_valid(self, board):
+        transposed = zip(*board)
+        for y in transposed:
+            if not self.is_unit_valid(y):
+                return False
+        return True
+            
+    def is_box_valid(self, board):
+        for i in (0, 3, 6):
+           for j in (0, 3, 6):
+            #Tranpose the square into array
+                array = [board[x][y] for x in range(i, i+3) for y in range(j, j+3)]
+                if not self.is_unit_valid(array):
+                    return False
+        return True
+            
+    def is_unit_valid(self, unit):
+        unit = [i for i in unit if i != '.']
+        return len(set(unit)) == len(unit)
