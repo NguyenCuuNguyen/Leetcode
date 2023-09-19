@@ -16,6 +16,7 @@ class Solution:
             return None
         self.invertTree(root.left)
         self.invertTree(root.right)
+        #Swap major left and right branches
         root.left, root.right = root.right, root.left
         return root
         
