@@ -39,5 +39,9 @@ class Solution:
                 head = mid+1
         return output
     #LESSON 0: Search in sorted array, use binary search
+
     #LESSON 1: In binary search, use separate "if conditions" to evaluate == and either > or < instead of group = and > or< together
+    
     #LESSON 2: in the second if (after confirming middle !=target), if evaluate for the opposite direction first (i.e.,> for first output), we will miss the case [5,7,7,8,8,10] because we're moving head up & evaluating the bigger half, instead of the desired smaller half. Similarly with the other direction
+
+    #LESSON 4: In binary search, mid = head+(tail-head)//2, not len(array)//2 because we need to update mid depending on head and tail
