@@ -5,7 +5,10 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+#REVIEW THIS PROBLEM
 class Solution:
+     #SOLUTION 1:
      def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         inorder_map={val:idx for idx, val in enumerate(inorder)}
         preorder_idx=0
@@ -34,6 +37,28 @@ class Solution:
             return root
         
         return treeHelper(0, len(inorder)-1)
+     
+    #SOLUTION 2:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        if not preorder or not inorder:
+            return None
+        root = TreeNode(preorder[0])
+        index = inorder.index(root.val)
+        left_size = len(inorder[:index])
+        root.left = self.buildTree(preorder[1:left_size+1], inorder[:index])
+        root.right = self.buildTree(preorder[1+left_size:], inorder[index+1:])
+        return root
+     
+    #SOLUTION 2.1:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        if not preorder or not inorder:
+            return None
+        root = TreeNode(preorder[0])
+        index = inorder.index(root.val)
+        root.left = self.buildTree(preorder[1:index+1], inorder[:index])
+        root.right = self.buildTree(preorder[1+index:], inorder[index+1:])
+        return root
+
     #LESSON 1: Hashmap return index in constant time
     #LESSON 2: Can always REASSIGN/ complete node's values AFTER INITIATION. 
 #numleft = number of elements in left subtree = length of list from 0 to root's index in inorder list. root is first elemetn of preorder list
