@@ -13,6 +13,7 @@ class Solution:
         inorder_map={val:idx for idx, val in enumerate(inorder)}
         preorder_idx=0
 
+        # takes two arguments: the start and end indices of the current subtree we're working on. If the start index is greater than the end index, we've reached the end of a branch and we should return None.
         def treeHelper(left, right):
             #Parent's call sets the limit to how far left and right indexes are:
             print(f"call treeHelper: left={left}, right={right}")
@@ -36,7 +37,7 @@ class Solution:
             print("\n")
             return root
         
-        return treeHelper(0, len(inorder)-1)
+        return treeHelper(0, len(inorder)-1) 
      
     #SOLUTION 2:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:

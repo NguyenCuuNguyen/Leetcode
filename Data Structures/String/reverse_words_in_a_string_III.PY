@@ -9,3 +9,7 @@ class Solution:
             re.append(word)
         ans = ' '.join(re)
         return ans
+    
+    #pythonic answer
+    def reverseWords(self, s: str) -> str:
+        return ' '.join(map(lambda word: word[::-1], s.split()))
