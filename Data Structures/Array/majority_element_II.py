@@ -15,9 +15,9 @@ class Solution:
         result = [x for x in dic if dic[x] > length]
         return result
     
-    #SOLUTION 2: Boyer-Moore Majority Voting Algorithm
+    #SOLUTION 2: Boyer-Moore Majority Voting Algorithm O(N) time and O(1) space
     def majorityElement(self, nums: List[int]) -> List[int]:
-        can1, can2, count1, count2 = 0,0,0,0
+        can1, can2, count1, count2 = 0,1,0,0 #will fail for[0,0,0]
 
         if not nums:
             return []
